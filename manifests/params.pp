@@ -33,6 +33,7 @@ class bind::params {
   }
 
   $service = $::operatingsystem ? {
+    /(?i:RedHat|CentOS)/ => 'named',
     default => 'bind9',
   }
 
@@ -57,18 +58,22 @@ class bind::params {
   }
 
   $config_file = $::operatingsystem ? {
+    /(?i:RedHat|CentOS)/ => '/etc/named.conf',
     default => '/etc/bind/named.conf',
   }
 
   $config_file_mode = $::operatingsystem ? {
+    /(?i:RedHat|CentOS)/ => '0640',
     default => '0644',
   }
 
   $config_file_owner = $::operatingsystem ? {
+    /(?i:RedHat|CentOS)/ => 'root',
     default => 'bind',
   }
 
   $config_file_group = $::operatingsystem ? {
+    /(?i:RedHat|CentOS)/ => 'named',
     default => 'bind',
   }
 
@@ -83,6 +88,7 @@ class bind::params {
   }
 
   $data_dir = $::operatingsystem ? {
+    /(?i:RedHat|CentOS)/ => '/var/named',
     default => '/var/cache/bind',
   }
 
