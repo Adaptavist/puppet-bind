@@ -54,6 +54,7 @@ class bind::params {
   }
 
   $config_dir = $::operatingsystem ? {
+    /(?i:RedHat|CentOS)/ => '/etc/named',
     default => '/etc/bind',
   }
 
