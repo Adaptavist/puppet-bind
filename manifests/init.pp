@@ -153,6 +153,12 @@
 # [*config_dir*]
 #   Main configuration directory. Used by puppi
 #
+# [*config_dir_owner *]
+#   Owner of main configuration directory and contents.
+#
+# [*config_dir_group *]
+#   Main configuration directory and contents.
+#
 # [*config_file*]
 #   Main configuration file path
 #
@@ -241,6 +247,8 @@ class bind (
   $process_args        = params_lookup( 'process_args' ),
   $process_user        = params_lookup( 'process_user' ),
   $config_dir          = params_lookup( 'config_dir' ),
+  $config_dir_owner    = params_lookup( 'config_dir_owner' ),
+  $config_dir_group    = params_lookup( 'config_dir_group' ),
   $config_file         = params_lookup( 'config_file' ),
   $config_file_mode    = params_lookup( 'config_file_mode' ),
   $config_file_owner   = params_lookup( 'config_file_owner' ),
@@ -378,6 +386,8 @@ class bind (
       purge   => $bind::bool_source_dir_purge,
       replace => $bind::manage_file_replace,
       audit   => $bind::manage_audit,
+      owner   => $bind::config_dir_owner,
+      group   => $bind::config_dir_group,
     }
   }
 

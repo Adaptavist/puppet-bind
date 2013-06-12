@@ -50,6 +50,7 @@ class bind::params {
   }
 
   $process_user = $::operatingsystem ? {
+    /(?i:RedHat|CentOS)/ => 'named',
     default => 'bind',
   }
 
@@ -100,6 +101,10 @@ class bind::params {
   $log_file = $::operatingsystem ? {
     default => '/var/log/syslog',
   }
+
+  $config_dir_owner = 'root'
+
+  $config_dir_group = $process_user
 
   $port = '53'
   $protocol = 'udp'
