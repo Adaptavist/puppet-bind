@@ -1,0 +1,18 @@
+// File managed by puppet
+options {
+        directory "<%= @data_dir %>";
+        auth-nxdomain no;
+        listen-on-v6 { any; };
+        recursion yes;
+};
+
+logging {
+        channel querylog{
+                 file "<%= @querylog_file %>";
+                 severity debug 3;
+                 print-category yes;
+                 print-time yes;
+                 print-severity yes;
+                };
+        category queries { querylog;};
+};
